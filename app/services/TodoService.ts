@@ -2,7 +2,6 @@ import { Todo } from "../models/Todo";
 
 export const getTodos = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "todo/get";
-    console.log(url)
     try {
         const response = await fetch(url, {
             method: 'GET',
