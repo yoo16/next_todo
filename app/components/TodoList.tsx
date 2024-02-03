@@ -1,6 +1,7 @@
 "use client"
 
 import { Todo } from "../models/Todo";
+import { Badge } from "./Badge";
 
 interface TodoListProps {
     todos: Todo[];
@@ -15,6 +16,13 @@ const TodoList = ({ todos, onDeleteTodo }: TodoListProps) => {
                 <div key={index} className="flex border-b border-gray-200">
                     <div className="w-[80%] p-4">
                         {todo.value}
+                        <div>
+                            {
+                                todo?.tags && todo?.tags.map((tag, tagIndex) => (
+                                    <Badge label={tag} key={tagIndex} />
+                                ))
+                            }
+                        </div>
                     </div>
                     <div className="w-[20%] m-2">
                         <button
