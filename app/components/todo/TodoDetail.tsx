@@ -1,5 +1,5 @@
 import { Todo } from "@/app/models/Todo";
-import { Badge } from "@/app/components/Badge";
+import { Badge } from "@/app/components/tag/Badge";
 
 export interface TodoDetailProps {
     index: number;

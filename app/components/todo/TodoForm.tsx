@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react";
-import ClickButton from "./ClickButton";
-import Input from "./Input";
-import TagsInput from "./TagsInput";
+import ClickButton from "../ClickButton";
+import Input from "../Input";
+import TagsInput from "../tag/TagsInput";
 
 interface TodoFormProps {
     onSaveTodo: any;

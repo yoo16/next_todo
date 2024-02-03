@@ -1,8 +1,8 @@
 "use client"
 
 import React, { useEffect, useState } from 'react';
-import TodoList from './components/TodoList';
-import TodoForm from './components/TodoForm';
+import TodoList from './components/todo/TodoList';
+import TodoForm from './components/todo/TodoForm';
 import { postTodos, getTodos } from './services/TodoService';
 import { Todo } from './models/Todo';
 
