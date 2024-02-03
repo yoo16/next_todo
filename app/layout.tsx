@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main className="m-auto mx-5">
+        <main className="mx-auto w-1/2">
           {children}
         </main>
       </body>

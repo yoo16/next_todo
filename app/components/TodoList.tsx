@@ -11,21 +11,20 @@ const TodoList = ({ todos, onDeleteTodo }: TodoListProps) => {
 
     return (
         <div>
-            <ul>
-                {todos.map((todo, index) => (
-                    <li key={index}>
-                        <span className="p-4">
-                            {todo.value}
-                        </span>
-
+            {todos.map((todo, index) => (
+                <div key={index} className="flex border-b border-gray-200">
+                    <div className="w-[80%] p-4">
+                        {todo.value}
+                    </div>
+                    <div className="w-[20%] m-2">
                         <button
                             onClick={() => onDeleteTodo(index)}
-                            className="w-[100px] text-white py-2 px-4 mb-2 rounded bg-red-500 hover:bg-red-700"
+                            className="w-[100px] text-white p-2 mb-2 rounded bg-red-500 hover:bg-red-700"
                         >Delete
                         </button>
-                    </li>
-                ))}
-            </ul>
+                    </div>
+                </div>
+            ))}
         </div>
     );
 }

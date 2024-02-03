@@ -19,7 +19,7 @@ const TodoForm = ({ onSaveTodo }: TodoFormProps) => {
     return (
         <div>
             <Input type="text" value={value} onChange={setValue} />
-            <ClickButton label="Add" onClick={addClickHandler} />
+            <ClickButton label="Add" onClick={addClickHandler} disabled={!value} />
         </div>
     );
 }
