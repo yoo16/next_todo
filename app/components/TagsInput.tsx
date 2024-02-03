@@ -47,7 +47,7 @@ export const TagsInput = ({ onChangeTags, tags = [], className, ...props }: Tags
                 type="text"
                 className={'flex-grow border-0 mb-1 outline-none'}
                 onKeyDown={handleKeyDown}
-                placeholder="Enter tag"
+                placeholder="Enter tag..."
                 {...props}
             />
         </div>

@@ -20,7 +20,7 @@ const TodoForm = ({ onSaveTodo }: TodoFormProps) => {
 
     return (
         <div>
-            <Input type="text" value={value} onChange={setValue} placeholder="Todo..." />
+            <Input type="text" value={value} onChange={setValue} placeholder="Enter Todo..." />
             <TagsInput tags={tags} onChangeTags={(newTags) => { setTags(newTags) }} />
             <ClickButton label="Add" onClick={addClickHandler} disabled={!value} />
         </div>
