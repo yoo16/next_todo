@@ -11,10 +11,6 @@ import TagsInput from './components/TagsInput';
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
 
-  const [tags, setTags] = useState(['React', 'Next.js', 'JavaScript']);
-  // const [tags, setTags] = useState(['React']);
-  const [newTag, setNewTag] = useState('');
-
   useEffect(() => {
     (async () => {
       const data = await getTodos();
@@ -23,7 +19,7 @@ export default function Home() {
     })();
   }, [])
 
-  const saveTodo = async (value: string) => {
+  const saveTodo = async (value: string, tags: string[]) => {
     if (value.trim() !== '') {
       const data = [{ value, tags }, ...todos] as Todo[];
       await postTodos(data);
@@ -41,8 +37,6 @@ export default function Home() {
     <div>
       <h1 className="flex p-3 me-3 text-2xl justify-center">TODO App</h1>
       <TodoForm onSaveTodo={saveTodo} />
-
-      <TagsInput tags={tags} onChangeTags={(newTags) => { setTags(newTags) }} />
 
       <TodoList todos={todos} onDeleteTodo={deleteTodo} />
     </div>

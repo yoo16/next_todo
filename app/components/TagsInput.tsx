@@ -38,12 +38,7 @@ export const TagsInput = ({ onChangeTags, tags = [], isError, className, ...prop
     }
 
     return (
-        <div
-            className={clsx(
-                'flex flex-wrap text-gray-700 border leading-tight pt-3 pb-2 px-4 rounded',
-                styles[isError ? 'error' : 'default']
-            )}
-        >
+        <div className="flex flex-wrap text-gray-700 border leading-tight mb-3 p-3 rounded">
             {tags.map((tag, i) => {
                 return (
                     <Badge label={tag} key={i} onClose={() => onClose(i)} />

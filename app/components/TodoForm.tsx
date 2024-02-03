@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ClickButton from "./ClickButton";
 import Input from "./Input";
+import TagsInput from "./TagsInput";
 
 interface TodoFormProps {
     onSaveTodo: any;
@@ -10,15 +11,17 @@ interface TodoFormProps {
 
 const TodoForm = ({ onSaveTodo }: TodoFormProps) => {
     const [value, setValue] = useState('');
+    const [tags, setTags] = useState(['React', 'Next.js', 'JavaScript']);
 
     const addClickHandler = () => {
-        onSaveTodo(value);
+        onSaveTodo(value ,tags);
         setValue("");
     }
 
     return (
         <div>
             <Input type="text" value={value} onChange={setValue} />
+            <TagsInput tags={tags} onChangeTags={(newTags) => { setTags(newTags) }} />
             <ClickButton label="Add" onClick={addClickHandler} disabled={!value} />
         </div>
     );
