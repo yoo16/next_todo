@@ -5,8 +5,6 @@ import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 import { postTodos, getTodos } from './services/TodoService';
 import { Todo } from './models/Todo';
-import TagList from './components/TagList';
-import TagsInput from './components/TagsInput';
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -35,9 +33,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className="flex p-3 me-3 text-2xl justify-center">TODO App</h1>
       <TodoForm onSaveTodo={saveTodo} />
-
       <TodoList todos={todos} onDeleteTodo={deleteTodo} />
     </div>
   );

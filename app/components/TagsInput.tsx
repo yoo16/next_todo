@@ -1,11 +1,10 @@
 import React from 'react'
-import clsx from 'clsx'
 import { Badge } from './Badge'
 
-type TagsInputProps = React.ComponentPropsWithoutRef<'input'> & {
-    isError?: boolean
-    tags: string[]
-    onChangeTags?: (tags: string[]) => void
+interface TagsInputProps {
+    tags: string[];
+    onChangeTags?: (tags: string[]) => void;
+    className?: string;
 }
 
 const styles = {
@@ -13,7 +12,7 @@ const styles = {
     error: 'border-red-500 focus:bg-white focus:border-gray-500'
 }
 
-export const TagsInput = ({ onChangeTags, tags = [], isError, className, ...props }: TagsInputProps) => {
+export const TagsInput = ({ onChangeTags, tags = [], className, ...props }: TagsInputProps) => {
 
     const onClose = (i: number) => {
         const newTags = [...tags]
@@ -47,6 +46,8 @@ export const TagsInput = ({ onChangeTags, tags = [], isError, className, ...prop
             <input
                 type="text"
                 className={'flex-grow border-0 mb-1 outline-none'}
+                onKeyDown={handleKeyDown}
+                placeholder="Enter tag"
                 {...props}
             />
         </div>

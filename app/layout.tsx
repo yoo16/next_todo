@@ -15,6 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <h1 className="flex p-3 me-3 text-2xl justify-center">TODO App</h1>
         <main className="mx-auto w-1/2">
           {children}
         </main>

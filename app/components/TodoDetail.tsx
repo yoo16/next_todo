@@ -1,5 +1,5 @@
-import { Todo } from "../models/Todo";
-import { Badge } from "./Badge";
+import { Todo } from "@/app/models/Todo";
+import { Badge } from "@/app/components/Badge";
 
 export interface TodoDetailProps {
     index: number;
@@ -8,10 +8,11 @@ export interface TodoDetailProps {
 }
 
 const TodoDetail = ({ index, todo, onDeleteTodo }: TodoDetailProps) => {
+    const deleteClass = "text-white text-xs px-3 py-2 mb-2 rounded bg-red-500 hover:bg-red-700";
     return (
-        <div key={index} className="flex border-b border-gray-200">
-            <div className="w-[80%] p-4">
-                {todo.value}
+        <div key={index} className="flex items-center border-b border-gray-200">
+            <div className="w-[80%] p-2">
+                <div className="mb-2">{todo.value}</div>
                 <div>
                     {
                         todo?.tags && todo?.tags.map((tag, tagIndex) => (
@@ -20,10 +21,11 @@ const TodoDetail = ({ index, todo, onDeleteTodo }: TodoDetailProps) => {
                     }
                 </div>
             </div>
-            <div className="w-[20%] m-2">
+
+            <div className="w-[20%]">
                 <button
                     onClick={() => onDeleteTodo(index)}
-                    className="w-[100px] text-white p-2 mb-2 rounded bg-red-500 hover:bg-red-700"
+                    className={deleteClass}
                 >Delete
                 </button>
             </div>

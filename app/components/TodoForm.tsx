@@ -11,16 +11,16 @@ interface TodoFormProps {
 
 const TodoForm = ({ onSaveTodo }: TodoFormProps) => {
     const [value, setValue] = useState('');
-    const [tags, setTags] = useState(['React', 'Next.js', 'JavaScript']);
+    const [tags, setTags] = useState<string[]>([]);
 
     const addClickHandler = () => {
-        onSaveTodo(value ,tags);
+        onSaveTodo(value, tags);
         setValue("");
     }
 
     return (
         <div>
-            <Input type="text" value={value} onChange={setValue} />
+            <Input type="text" value={value} onChange={setValue} placeholder="Todo..." />
             <TagsInput tags={tags} onChangeTags={(newTags) => { setTags(newTags) }} />
             <ClickButton label="Add" onClick={addClickHandler} disabled={!value} />
         </div>
