@@ -8,14 +8,29 @@ import { Todo } from './models/Todo';
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [autoCompleteTags, setAutoCompleteTags] = useState<string[]>([]);
 
   useEffect(() => {
     (async () => {
       const data = await getTodos();
-      console.log(data)
       if (data) setTodos(data);
     })();
   }, [])
+
+
+  useEffect(() => {
+    if (!todos) return;
+    var tags = autoCompleteTags;
+    todos?.forEach((todo) => {
+      if (todo.tags) {
+        tags = [...tags, ...todo.tags];
+        tags = tags.filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        });
+      }
+    });
+    setAutoCompleteTags(tags);
+  }, [todos])
 
   const saveTodo = async (value: string, tags: string[]) => {
     if (value.trim() !== '') {
@@ -33,7 +48,7 @@ export default function Home() {
 
   return (
     <div>
-      <TodoForm onSaveTodo={saveTodo} />
+      <TodoForm onSaveTodo={saveTodo} autoCompleteTags={autoCompleteTags} />
       <TodoList todos={todos} onDeleteTodo={deleteTodo} />
     </div>
   );

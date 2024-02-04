@@ -10,7 +10,7 @@ interface InputProps {
 const Input = ({ type, value, onChange, placeholder }: InputProps) => {
     const className = `
                 p-3 my-2
-                border-2 
+                border 
                 border-gray-200 
                 rounded w-full 
                 focus:outline-none 
