@@ -3,7 +3,8 @@ export interface Todo {
     tags: string[]
 }
 
-export const initialAutoCompleteTags = ['Apple', 'Microsoft', 'Google'];
+const arrayValues = process.env.NEXT_PUBLIC_AUTO_TAGS;
+export const initialAutoCompleteTags = arrayValues?.split(';') || [];
 
 export const loadTags = (todos: Todo[], currentTags: string[]) => {
     if (!todos) return currentTags;
