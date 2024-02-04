@@ -24,8 +24,6 @@ export const TagsInput = (
 
     const [inputValue, setInputValue] = useState('');
     const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
-    const [selectedOption, setSelectedOption] = useState<string | null>(null);
-    const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
     const updateTags = (value: string) => {
@@ -68,8 +66,7 @@ export const TagsInput = (
         if (e.key === 'Backspace' && !value.length && tags.length > 0) {
             onClose(tags.length - 1);
             e.preventDefault();
-            // return
-        } else if (e.key === 'Tab' && selectedOption !== null) {
+        } else if (e.key === 'Tab') {
             setFilteredOptions([]);
             inputRef.current?.focus();
             e.preventDefault();
@@ -79,16 +76,9 @@ export const TagsInput = (
         }
     }
 
-    useEffect(() => {
-        if (selectedOption !== null) {
-            setInputValue(selectedOption);
-            setFilteredOptions([]);
-        }
-    }, [selectedOption]);
-
     return (
         <div>
-            <div className="flex flex-wrap text-gray-700 border leading-tight p-3 rounded">
+            <div className=" text-gray-700 border leading-tight mb-3 p-3 rounded">
                 {tags.map((tag, i) => {
                     return (
                         <Badge label={tag} key={i} onClose={() => onClose(i)} />
@@ -104,23 +94,25 @@ export const TagsInput = (
                     placeholder={placeholder}
                     {...props}
                 />
-            </div>
-            <div className="mb-3">
-                {filteredOptions.length > 0 && (
-                    <ul>
-                        {filteredOptions.map((option, index) => (
-                            <li
-                                key={index}
-                                value={option}
-                                onClick={() => handleOptionClick(option)}
-                                onKeyDown={handleOptionEnter}
-                                onFocus={() => setSelectedOptionIndex(index)}
-                                className="border-b text-xs p-2"
-                                tabIndex={0}>
-                                {option}
-                            </li>
-                        ))}
-                    </ul>
+                {inputValue && filteredOptions.length > 0 && (
+                    <div>
+                        <span className="text-xs text-gray-500">
+                            Auto Complete (Select by tab key and Enter)
+                        </span>
+                        <ul>
+                            {filteredOptions.map((option, index) => (
+                                <li
+                                    key={index}
+                                    value={option}
+                                    onClick={() => handleOptionClick(option)}
+                                    onKeyDown={handleOptionEnter}
+                                    className="border-b text-xs p-2"
+                                    tabIndex={0}>
+                                    {option}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 )}
             </div>
         </div>

@@ -8,7 +8,7 @@ export interface TodoDetailProps {
 }
 
 const TodoDetail = ({ index, todo, onDeleteTodo }: TodoDetailProps) => {
-    const deleteClass = "text-white text-xs px-3 py-2 mb-2 rounded bg-red-500 hover:bg-red-700";
+    const deleteClass = "text-white text-xs px-3 py-1 mb-2 rounded bg-red-500 hover:bg-red-700";
     return (
         <div key={index} className="flex items-center border-b border-gray-200">
             <div className="w-[80%] p-2">

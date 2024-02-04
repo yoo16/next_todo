@@ -6,7 +6,7 @@ import Input from "@/app/components/Input";
 import TagsInput from "@/app/components/tag/TagsInput";
 
 interface TodoFormProps {
-    onSaveTodo: any;
+    onSaveTodo: (value: string, tags: string[]) => void;
     autoCompleteTags: string[]
 }
 
@@ -30,11 +30,13 @@ const TodoForm = ({
                 value={value}
                 onChange={setValue}
                 placeholder="Enter Todo..." />
+
             <TagsInput
                 tags={tags}
                 autoCompleteTags={autoCompleteTags}
                 placeholder="Enter Tag..."
                 onChangeTags={(tag) => { setTags(tag) }} />
+
             <ClickButton
                 label="Add"
                 onClick={addClickHandler}

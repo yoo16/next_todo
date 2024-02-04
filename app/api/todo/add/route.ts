@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from 'fs/promises';
 
-const saveTodos = async (values:any) => {
+const JSON_PATH = process.env.TODO_JSON_FILE || "";
+
+const saveTodos = async (values: any) => {
     try {
-        await fs.writeFile('data/todos.json', JSON.stringify(values));
+        await fs.writeFile(JSON_PATH, JSON.stringify(values));
     } catch (error) {
-        console.error('データの保存に失敗しました', error);
+        console.error("saveTodos:", error);
     }
 };
 

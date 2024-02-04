@@ -1,11 +1,11 @@
 "use client"
 
-import { Todo } from "../../models/Todo";
-import TodoDetail from "./TodoDetail";
+import { Todo } from "@/app/models/Todo";
+import TodoDetail from "@/app/components/todo/TodoDetail";
 
 interface TodoListProps {
     todos: Todo[];
-    onDeleteTodo: any;
+    onDeleteTodo: (index: number) => void;
 }
 
 const TodoList = ({ todos, onDeleteTodo }: TodoListProps) => {

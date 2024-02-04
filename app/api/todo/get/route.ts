@@ -6,7 +6,7 @@ const loadTodos = async () => {
         const data = await fs.readFile('data/todos.json', 'utf-8');
         return await JSON.parse(data);
     } catch (error) {
-        console.error('データの読み込みに失敗しました', error);
+        console.error("loadTodos:", error);
     }
 };
 
