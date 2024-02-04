@@ -3,14 +3,12 @@ import { Todo } from "../models/Todo";
 export const getTodos = async () => {
     const url = process.env.NEXT_PUBLIC_API_URL + "todo/get";
     try {
-        const response = await fetch(url, {
-            method: 'GET',
-        });
+        const response = await fetch(url);
         if (response.ok) {
             return await response.json();
         }
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
 
@@ -27,6 +25,6 @@ export const postTodos = async (todos: Todo[]) => {
             return await response.json();
         }
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }

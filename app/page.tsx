@@ -2,14 +2,14 @@
 
 import React, { useEffect, useState } from 'react';
 import { postTodos, getTodos } from './services/TodoService';
-import { Todo } from '@/app/models/Todo';
+import { Todo, initialAutoCompleteTags, loadTags } from '@/app/models/Todo';
 import TodoList from '@/app/components/todo/TodoList';
 import TodoForm from '@/app/components/todo/TodoForm';
 import Loading from '@/app/components/Loading';
 
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [autoCompleteTags, setAutoCompleteTags] = useState<string[]>(['Apple', 'Microsoft', 'Google']);
+  const [autoCompleteTags, setAutoCompleteTags] = useState<string[]>(initialAutoCompleteTags);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -22,17 +22,7 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    if (!todos) return;
-    var tags = autoCompleteTags;
-    todos?.forEach((todo) => {
-      if (todo.tags) {
-        tags = [...tags, ...todo.tags];
-        tags = tags.filter((value, index, self) => {
-          return self.indexOf(value) === index;
-        });
-      }
-    });
-    tags.sort();
+    const tags = loadTags(todos, autoCompleteTags);
     setAutoCompleteTags(tags);
   }, [todos, autoCompleteTags])
 

@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Badge } from './Badge'
 
 interface TagsInputProps {
