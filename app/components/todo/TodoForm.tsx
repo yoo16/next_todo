@@ -14,21 +14,20 @@ const TodoForm = ({
     onSaveTodo,
     autoCompleteTags = []
 }: TodoFormProps) => {
-    const [value, setValue] = useState('');
+    const [inputValue, setInputValue] = useState('');
     const [tags, setTags] = useState<string[]>([]);
 
     const addClickHandler = () => {
-        onSaveTodo(value, tags);
-        setValue("");
+        onSaveTodo(inputValue, tags);
+        setInputValue("");
         setTags([]);
     }
 
     return (
         <div>
             <Input
-                type="text"
-                value={value}
-                onChange={setValue}
+                value={inputValue}
+                onChange={setInputValue}
                 placeholder="Enter Todo..." />
 
             <TagsInput
@@ -40,7 +39,7 @@ const TodoForm = ({
             <ClickButton
                 label="Add"
                 onClick={addClickHandler}
-                disabled={!value} />
+                disabled={!inputValue} />
         </div>
     );
 }

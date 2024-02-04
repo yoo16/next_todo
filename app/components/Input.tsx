@@ -1,13 +1,13 @@
 "use client"
 
 interface InputProps {
-    type: string,
+    type?: string,
     value?: string,
     onChange?: (value: any) => void,
     placeholder?: string,
 }
 
-const Input = ({ type, value, onChange, placeholder }: InputProps) => {
+const Input = ({ type="text", value, onChange, placeholder }: InputProps) => {
     const className = `
                 p-3 my-2
                 border 

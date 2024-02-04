@@ -7,8 +7,6 @@ import TodoList from '@/app/components/todo/TodoList';
 import TodoForm from '@/app/components/todo/TodoForm';
 import Loading from '@/app/components/Loading';
 
-
-
 export default function Home() {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [autoCompleteTags, setAutoCompleteTags] = useState<string[]>(initialAutoCompleteTags);
