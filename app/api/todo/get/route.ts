@@ -16,7 +16,6 @@ const isFileExists = async (path: string) => {
 const loadTodos = async () => {
     try {
         const isFile = await isFileExists(JSON_PATH);
-        console.log("isFile:", isFile)
         if (isFile) {
             const data = await fs.readFile(JSON_PATH, 'utf-8');
             return await JSON.parse(data);
@@ -27,7 +26,6 @@ const loadTodos = async () => {
         console.error("loadTodos:", error);
     }
 };
-
 
 export async function GET() {
     const data = await loadTodos();

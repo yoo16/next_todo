@@ -3,7 +3,7 @@ import { Badge } from './Badge'
 
 interface TagsInputProps {
     tags: string[];
-    autoCompleteTags: string[];
+    autoCompleteTags?: string[];
     onChangeTags?: (tags: string[]) => void;
     placeholder?: string;
 }
